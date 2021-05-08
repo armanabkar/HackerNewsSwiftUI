@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F02609772644193800EFB85C /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = F02609762644193800EFB85C /* SwiftUIRefresh */; };
 		F09D9C5F264168F000BD91CD /* HackerNewsSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09D9C5E264168F000BD91CD /* HackerNewsSwiftUIApp.swift */; };
 		F09D9C61264168F000BD91CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09D9C60264168F000BD91CD /* ContentView.swift */; };
 		F09D9C63264168F100BD91CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F09D9C62264168F100BD91CD /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F02609772644193800EFB85C /* SwiftUIRefresh in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +115,9 @@
 			dependencies = (
 			);
 			name = HackerNewsSwiftUI;
+			packageProductDependencies = (
+				F02609762644193800EFB85C /* SwiftUIRefresh */,
+			);
 			productName = HackerNewsSwiftUI;
 			productReference = F09D9C5B264168F000BD91CD /* HackerNewsSwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -140,6 +145,9 @@
 				Base,
 			);
 			mainGroup = F09D9C52264168F000BD91CD;
+			packageReferences = (
+				F02609752644193800EFB85C /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
+			);
 			productRefGroup = F09D9C5C264168F000BD91CD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -360,6 +368,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F02609752644193800EFB85C /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/timbersoftware/SwiftUIRefresh.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F02609762644193800EFB85C /* SwiftUIRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F02609752644193800EFB85C /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
+			productName = SwiftUIRefresh;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F09D9C53264168F000BD91CD /* Project object */;
 }
