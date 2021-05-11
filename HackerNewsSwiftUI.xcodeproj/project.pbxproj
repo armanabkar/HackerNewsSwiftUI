@@ -19,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F0432935264B1B4C00D75DAC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F09D9C5B264168F000BD91CD /* HackerNewsSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNewsSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F09D9C5E264168F000BD91CD /* HackerNewsSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsSwiftUIApp.swift; sourceTree = "<group>"; };
 		F09D9C60264168F000BD91CD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,6 +47,7 @@
 		F09D9C52264168F000BD91CD = {
 			isa = PBXGroup;
 			children = (
+				F0432935264B1B4C00D75DAC /* README.md */,
 				F09D9C5D264168F000BD91CD /* HackerNewsSwiftUI */,
 				F09D9C5C264168F000BD91CD /* Products */,
 			);
