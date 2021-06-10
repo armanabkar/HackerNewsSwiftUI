@@ -66,9 +66,7 @@
 			children = (
 				F09D9C7626416D8400BD91CD /* View */,
 				F09D9C6E26416A5600BD91CD /* Model */,
-				F09D9C5E264168F000BD91CD /* HackerNewsSwiftUIApp.swift */,
-				F09D9C62264168F100BD91CD /* Assets.xcassets */,
-				F09D9C67264168F100BD91CD /* Info.plist */,
+				F09EB1EB2672126900FDF779 /* Support Files */,
 				F09D9C64264168F100BD91CD /* Preview Content */,
 			);
 			path = HackerNewsSwiftUI;
@@ -99,6 +97,16 @@
 				F09D9C7B26416F6400BD91CD /* WebView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F09EB1EB2672126900FDF779 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F09D9C5E264168F000BD91CD /* HackerNewsSwiftUIApp.swift */,
+				F09D9C62264168F100BD91CD /* Assets.xcassets */,
+				F09D9C67264168F100BD91CD /* Info.plist */,
+			);
+			path = "Support Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,7 +321,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"HackerNewsSwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = QMW26WR72K;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = HackerNewsSwiftUI/Info.plist;
+				INFOPLIST_FILE = "HackerNewsSwiftUI/Support Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -335,7 +343,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"HackerNewsSwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = QMW26WR72K;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = HackerNewsSwiftUI/Info.plist;
+				INFOPLIST_FILE = "HackerNewsSwiftUI/Support Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
