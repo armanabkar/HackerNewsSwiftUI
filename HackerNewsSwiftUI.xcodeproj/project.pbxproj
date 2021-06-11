@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F02609772644193800EFB85C /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = F02609762644193800EFB85C /* SwiftUIRefresh */; };
+		F0264D5D267342EA006D18D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0264D5C267342EA006D18D9 /* LaunchScreen.storyboard */; };
 		F09D9C5F264168F000BD91CD /* HackerNewsSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09D9C5E264168F000BD91CD /* HackerNewsSwiftUIApp.swift */; };
 		F09D9C61264168F000BD91CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09D9C60264168F000BD91CD /* ContentView.swift */; };
 		F09D9C63264168F100BD91CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F09D9C62264168F100BD91CD /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F0264D5C267342EA006D18D9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0432935264B1B4C00D75DAC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F09D9C5B264168F000BD91CD /* HackerNewsSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNewsSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F09D9C5E264168F000BD91CD /* HackerNewsSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsSwiftUIApp.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				F09D9C5E264168F000BD91CD /* HackerNewsSwiftUIApp.swift */,
 				F09D9C62264168F100BD91CD /* Assets.xcassets */,
 				F09D9C67264168F100BD91CD /* Info.plist */,
+				F0264D5C267342EA006D18D9 /* LaunchScreen.storyboard */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0264D5D267342EA006D18D9 /* LaunchScreen.storyboard in Resources */,
 				F09D9C66264168F100BD91CD /* Preview Assets.xcassets in Resources */,
 				F09D9C63264168F100BD91CD /* Assets.xcassets in Resources */,
 			);
