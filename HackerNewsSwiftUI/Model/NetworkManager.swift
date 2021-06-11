@@ -11,7 +11,8 @@ class NetworkManager: ObservableObject {
     
     @Published var posts = [Post]()
     @Published var isLoading = true
-
+    @Published var showAlert = false
+    
     let algoliaURL = "https://hn.algolia.com/api/v1/search?tags=front_page"
     
     func fetchData() {
@@ -28,11 +29,13 @@ class NetworkManager: ObservableObject {
                         do {
                             let results = try decoder.decode(Results.self, from: safeData)
                             
-                            DispatchQueue.main.async { self.posts = results.hits }
-                            self.isLoading = false
+                            DispatchQueue.main.async {
+                                self.posts = results.hits
+                                self.isLoading = false
+                            }
                         } catch {
-                            print(error)
                             self.isLoading = false
+                            self.showAlert = true
                         }
                     }
                 }
