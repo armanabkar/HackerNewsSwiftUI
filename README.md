@@ -10,3 +10,7 @@ This app is based on the [H4X0R-News-iOS13-SwiftUI-Completed](https://github.com
 - Alert for possible errors (instead of just printing them)
 - Some Refactorings
 - UI Improvements
+
+### Contributing
+
+We appreciate your help!
