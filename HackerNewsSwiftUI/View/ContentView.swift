@@ -6,43 +6,35 @@
 //
 
 import SwiftUI
-import SwiftUIRefresh
 
 struct ContentView: View {
     
     @ObservedObject var networkManager = NetworkManager()
-    @State private var isShowing = false
     
     var body: some View {
         NavigationView {
-            if networkManager.isLoading {
-                ProgressView()
-            } else {
-                List(networkManager.posts) { post in
-                    NavigationLink(destination: DetailView(url: post.url)) {
-                        HStack {
-                            Text("\(String(post.points))\nPoint")
-                                .font(.footnote)
-                                .foregroundColor(Color.gray)
-                                .multilineTextAlignment(.center)
-                                .rotationEffect(.degrees(90))
-                            Divider()
-                            Text(post.title)
-                                .font(.title3)
-                        }
-                    }
-                }
-                .padding(.top, 8.0)
-                .navigationTitle(Text("Hacker News"))
-                .pullToRefresh(isShowing: $isShowing) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.networkManager.fetchData()
-                        self.isShowing = false
+            List(networkManager.posts) { post in
+                NavigationLink(destination: DetailView(url: post.url)) {
+                    HStack {
+                        Text("\(String(post.points))")
+                            .font(.footnote)
+                            .foregroundColor(Color.gray)
+                            .multilineTextAlignment(.center)
+                            .rotationEffect(.degrees(90))
+                        Divider()
+                        Text(post.title)
+                            .font(.title3)
                     }
                 }
             }
+            .padding(.top, 8.0)
+            .navigationTitle(Text("Hacker News"))
+            .background(Color("PrimaryOrange"))
         }
         .onAppear {
+            self.networkManager.fetchData()
+        }
+        .refreshable {
             self.networkManager.fetchData()
         }
         .alert(isPresented: $networkManager.showAlert) { () -> Alert in
@@ -50,7 +42,10 @@ struct ContentView: View {
                 self.networkManager.fetchData()
             }
             let secondaryButton = Alert.Button.cancel(Text("Cancel"))
-            return Alert(title: Text("Error"), message: Text("Sorry, there was a problem with your request."), primaryButton: primaryButton, secondaryButton: secondaryButton)
+            return Alert(title: Text("Error"),
+                         message: Text("Sorry, there was a problem with your request."),
+                         primaryButton: primaryButton,
+                         secondaryButton: secondaryButton)
         }
     }
 }
