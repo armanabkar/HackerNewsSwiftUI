@@ -30,7 +30,14 @@ struct ContentView: View {
             .padding(.top, 8.0)
             .navigationTitle(Text("Hacker News"))
             .background(Color("PrimaryOrange"))
+            .toolbar {
+                Image(systemName: "info.circle")
+                    .foregroundColor(.white)
+            }
         }
+        .accentColor(.white)
+        .navigationBarColor(backgroundColor: .clear,
+                            titleColor: .white)
         .onAppear {
             self.networkManager.fetchData()
         }
@@ -38,14 +45,10 @@ struct ContentView: View {
             self.networkManager.fetchData()
         }
         .alert(isPresented: $networkManager.showAlert) { () -> Alert in
-            let primaryButton = Alert.Button.default(Text("Try Again")) {
-                self.networkManager.fetchData()
-            }
-            let secondaryButton = Alert.Button.cancel(Text("Cancel"))
-            return Alert(title: Text("Error"),
-                         message: Text("Sorry, there was a problem with your request."),
-                         primaryButton: primaryButton,
-                         secondaryButton: secondaryButton)
+            Alert(title: Text("Error"),
+                  message: Text("Sorry, there was a problem with your request."),
+                  primaryButton: .default(Text("Try Again")) { self.networkManager.fetchData() },
+                  secondaryButton: .cancel(Text("Cancel")))
         }
     }
 }
