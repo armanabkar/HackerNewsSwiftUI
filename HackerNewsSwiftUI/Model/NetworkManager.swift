@@ -10,37 +10,24 @@ import Foundation
 class NetworkManager: ObservableObject {
     
     @Published var posts = [Post]()
-    @Published var isLoading = true
     @Published var showAlert = false
     
     let algoliaURL = "https://hn.algolia.com/api/v1/search?tags=front_page"
     
-    func fetchData() {
-        self.isLoading = true
-        
-        if let url = URL(string: algoliaURL) {
-            let session = URLSession(configuration: .default)
-            
-            let task = session.dataTask(with: url) { (data, response, error) in
-                if error == nil {
-                    let decoder = JSONDecoder()
-                    
-                    if let safeData = data {
-                        do {
-                            let results = try decoder.decode(Results.self, from: safeData)
-                            
-                            DispatchQueue.main.async {
-                                self.posts = results.hits
-                                self.isLoading = false
-                            }
-                        } catch {
-                            self.isLoading = false
-                            self.showAlert = true
-                        }
-                    }
-                }
-            }
-            task.resume()
+    func fetchData() async throws {
+        guard let url = URL(string: algoliaURL) else {
+            self.showAlert = true
+            return
         }
+        
+        let request = URLRequest(url: url)
+        let (data, response) = try await URLSession.shared.data(for: request)
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            self.showAlert = true
+            return
+        }
+        let results = try JSONDecoder().decode(Results.self, from: data)
+        
+        DispatchQueue.main.async { self.posts = results.hits }
     }
 }

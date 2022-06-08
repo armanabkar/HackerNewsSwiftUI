@@ -38,16 +38,18 @@ struct ContentView: View {
         .accentColor(.white)
         .navigationBarColor(backgroundColor: .clear,
                             titleColor: .white)
-        .onAppear {
-            self.networkManager.fetchData()
+        .task {
+            try? await networkManager.fetchData()
         }
         .refreshable {
-            self.networkManager.fetchData()
+            try? await networkManager.fetchData()
         }
         .alert(isPresented: $networkManager.showAlert) { () -> Alert in
             Alert(title: Text("Error"),
                   message: Text("Sorry, there was a problem with your request."),
-                  primaryButton: .default(Text("Try Again")) { self.networkManager.fetchData() },
+                  primaryButton: .default(Text("Try Again")) {
+                Task.init { try? await networkManager.fetchData() }
+            },
                   secondaryButton: .cancel(Text("Cancel")))
         }
     }
