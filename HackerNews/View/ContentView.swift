@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  HackerNewsSwiftUI
+//  HackerNews
 //
 //  Created by Arman Abkar on 5/4/21.
 //
@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @ObservedObject var networkManager = NetworkManager()
+    @State private var showInfoView = false
     
     var body: some View {
         NavigationView {
@@ -31,8 +32,13 @@ struct ContentView: View {
             .navigationTitle(Text("Hacker News"))
             .background(Color("PrimaryOrange"))
             .toolbar {
-                Image(systemName: "info.circle")
-                    .foregroundColor(.white)
+                Button {
+                    showInfoView.toggle()
+                } label: {
+                    Image(systemName: "info.circle")
+                        .foregroundColor(.white)
+                }
+
             }
         }
         .accentColor(.white)
@@ -51,6 +57,9 @@ struct ContentView: View {
                 Task.init { try? await networkManager.fetchData() }
             },
                   secondaryButton: .cancel(Text("Cancel")))
+        }
+        .sheet(isPresented: $showInfoView) {
+            InfoView()
         }
     }
 }

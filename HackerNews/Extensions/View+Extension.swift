@@ -1,6 +1,6 @@
 //
 //  View+Extension.swift
-//  HackerNewsSwiftUI
+//  HackerNews
 //
 //  Created by Arman Abkar on 6/7/22.
 //

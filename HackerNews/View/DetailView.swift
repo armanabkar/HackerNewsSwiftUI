@@ -1,6 +1,6 @@
 //
 //  DetailView.swift
-//  HackerNewsSwiftUI
+//  HackerNews
 //
 //  Created by Arman Abkar on 5/4/21.
 //
