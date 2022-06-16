@@ -30,7 +30,6 @@ struct ContentView: View {
             }
             .padding(.top, 8.0)
             .navigationTitle(Text("Hacker News"))
-            .background(Color("PrimaryOrange"))
             .toolbar {
                 Button {
                     showInfoView.toggle()
@@ -40,6 +39,7 @@ struct ContentView: View {
                 }
 
             }
+            .background(Color("PrimaryOrange"))
         }
         .accentColor(.white)
         .navigationBarColor(backgroundColor: .clear,
