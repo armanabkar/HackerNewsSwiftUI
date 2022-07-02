@@ -10,7 +10,7 @@ import SwiftUI
 struct InfoView: View {
     var body: some View {
         ZStack {
-            Color.secondary.opacity(0.25)
+            Color.gray.opacity(0.15)
                 .ignoresSafeArea()
             
             VStack(spacing: 35) {
@@ -25,6 +25,11 @@ struct InfoView: View {
                     .frame(width: 250, alignment: .center)
                 
                 Text("Hacker News is a social news website focusing on computer science and entrepreneurship. It is run by the investment fund and startup incubator Y Combinator. In general, content that can be submitted is defined as 'anything that gratifies one's intellectual curiosity'.")
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.center)
+                
+                Text("This app is built with SwiftUI and Algolia HN Search API.")
                     .font(.title3)
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.center)
