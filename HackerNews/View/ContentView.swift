@@ -14,36 +14,33 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List(networkManager.posts) { post in
-                NavigationLink(destination: DetailView(url: post.url)) {
-                    HStack {
-                        Text("\(String(post.points))")
-                            .font(.footnote)
-                            .foregroundColor(Color.gray)
-                            .multilineTextAlignment(.center)
-                            .rotationEffect(.degrees(90))
-                        Divider()
-                        Text(post.title)
-                            .font(.title3)
+            List {
+                Section {
+                    ForEach(networkManager.posts, id: \.id) { post in
+                        NavigationLink(destination: DetailView(url: post.url)) {
+                            HStack {
+                                Text("\(String(post.points))")
+                                    .font(.caption)
+                                    .foregroundColor(Color.gray)
+                                    .multilineTextAlignment(.center)
+                                    .rotationEffect(.degrees(90))
+                                Divider()
+                                Text(post.title)
+                            }
+                        }
                     }
                 }
             }
-            .padding(.top, 8.0)
             .navigationTitle(Text("Hacker News"))
             .toolbar {
                 Button {
                     showInfoView.toggle()
                 } label: {
                     Image(systemName: "info.circle")
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                 }
-
             }
-            .background(Color("PrimaryOrange"))
         }
-        .accentColor(.white)
-        .navigationBarColor(backgroundColor: .clear,
-                            titleColor: .white)
         .task {
             try? await networkManager.fetchData()
         }

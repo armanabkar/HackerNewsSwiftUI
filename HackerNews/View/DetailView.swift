@@ -13,9 +13,6 @@ struct DetailView: View {
     
     var body: some View {
         WebView(urlString: url)
-            .navigationBarColor(backgroundColor: UIColor(named: "PrimaryOrange"),
-                                titleColor: .white)
-            .navigationBarTitleDisplayMode(.inline)
     }
 }
 

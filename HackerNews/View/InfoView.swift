@@ -9,43 +9,40 @@ import SwiftUI
 
 struct InfoView: View {
     var body: some View {
-        ZStack {
-            Color.gray.opacity(0.15)
-                .ignoresSafeArea()
-            
-            VStack(spacing: 35) {
-                Capsule()
-                    .frame(width: 120, height: 6)
-                    .foregroundColor(Color.secondary)
-                    .opacity(0.25)
-                
-                Image("Logo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 250, alignment: .center)
-                
+        List {
+            Section {
                 Text("Hacker News is a social news website focusing on computer science and entrepreneurship. It is run by the investment fund and startup incubator Y Combinator. In general, content that can be submitted is defined as 'anything that gratifies one's intellectual curiosity'.")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .multilineTextAlignment(.center)
-                
-                Text("This app is built with SwiftUI and Algolia HN Search API.")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .multilineTextAlignment(.center)
-                
-                VStack(spacing: 10) {
-                    Text(appVersion)
-                        .fontWeight(.medium)
-                    
-                    Text("Developed by Arman Abkar")
-                        .fontWeight(.medium)
-                }
-                .font(.title3)
-                .foregroundColor(.secondary)
+            } header: {
+                Text("About Hacker News")
             }
-            .padding(20)
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+            
+            Section {
+                HStack {
+                    Text("Version")
+                        .fontWeight(.medium)
+                        .foregroundColor(.gray)
+                    Spacer()
+                    Text(appVersion)
+                }
+                HStack {
+                    Text("Developer")
+                        .fontWeight(.medium)
+                        .foregroundColor(.gray)
+                    Spacer()
+                    Text("Arman Abkar")
+                }
+                HStack {
+                    Text("Website")
+                        .fontWeight(.medium)
+                        .foregroundColor(.gray)
+                    Spacer()
+                    Text("[armanabkar.ir](https://armanabkar.ir)")
+                }
+            } header: {
+                Text("App Information")
+            } footer: {
+                Text("This app is built with SwiftUI and Algolia HN Search API.")
+            }
         }
     }
     
