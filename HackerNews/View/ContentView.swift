@@ -10,13 +10,12 @@ import SwiftUI
 struct ContentView: View {
     
     @ObservedObject var networkManager = NetworkManager()
-    @State private var showInfoView = false
     
     var body: some View {
         NavigationView {
             List {
                 Section {
-                    ForEach(networkManager.posts, id: \.id) { post in
+                    ForEach(networkManager.searchResults, id: \.id) { post in
                         NavigationLink(destination: DetailView(url: post.url)) {
                             HStack {
                                 Text("\(String(post.points))")
@@ -34,13 +33,14 @@ struct ContentView: View {
             .navigationTitle(Text("Hacker News"))
             .toolbar {
                 Button {
-                    showInfoView.toggle()
+                    networkManager.showInfoView.toggle()
                 } label: {
                     Image(systemName: "info.circle")
                         .foregroundColor(.black)
                 }
             }
         }
+        .searchable(text: $networkManager.searchText)
         .task {
             try? await networkManager.fetchData()
         }
@@ -55,7 +55,7 @@ struct ContentView: View {
             },
                   secondaryButton: .cancel(Text("Cancel")))
         }
-        .sheet(isPresented: $showInfoView) {
+        .sheet(isPresented: $networkManager.showInfoView) {
             InfoView()
         }
     }

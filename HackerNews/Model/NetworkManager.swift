@@ -11,6 +11,8 @@ class NetworkManager: ObservableObject {
     
     @Published var posts = [Post]()
     @Published var showAlert = false
+    @Published var showInfoView = false
+    @Published var searchText = ""
     
     let algoliaURL = "https://hn.algolia.com/api/v1/search?tags=front_page"
     
@@ -29,5 +31,11 @@ class NetworkManager: ObservableObject {
         let results = try JSONDecoder().decode(Results.self, from: data)
         
         DispatchQueue.main.async { self.posts = results.hits }
+    }
+    
+    var searchResults: [Post] {
+        let searchedResults = Array(posts)
+        guard !searchText.isEmpty else { return searchedResults }
+        return searchedResults.filter { $0.title.contains(searchText) }
     }
 }
