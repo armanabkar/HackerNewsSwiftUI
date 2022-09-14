@@ -14,7 +14,7 @@ This app is based on the [H4X0R-News-iOS13-SwiftUI-Completed](https://github.com
 - Alert for possible errors (instead of just printing them)
 - UI/UX Improvements
 - iOS 15
-- Async/Await
+- Async/Await network requests
 - Information Page
 
 ### Contributing

@@ -1,5 +1,5 @@
 //
-//  NetworkManager.swift
+//  ViewModel.swift
 //  HackerNews
 //
 //  Created by Arman Abkar on 5/4/21.
@@ -7,14 +7,14 @@
 
 import Foundation
 
-class NetworkManager: ObservableObject {
+final class ViewModel: ObservableObject {
     
     @Published var posts = [Post]()
     @Published var showAlert = false
     @Published var showInfoView = false
     @Published var searchText = ""
     
-    let algoliaURL = "https://hn.algolia.com/api/v1/search?tags=front_page"
+    private let algoliaURL = "https://hn.algolia.com/api/v1/search?tags=front_page"
     
     func fetchData() async throws {
         guard let url = URL(string: algoliaURL) else {

@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject var networkManager = NetworkManager()
+    @ObservedObject var vm = ViewModel()
     
     var body: some View {
         NavigationView {
             List {
                 Section {
-                    ForEach(networkManager.searchResults, id: \.id) { post in
+                    ForEach(vm.searchResults, id: \.id) { post in
                         NavigationLink(destination: DetailView(url: post.url)) {
                             HStack {
                                 Text("\(String(post.points))")
@@ -33,29 +33,29 @@ struct ContentView: View {
             .navigationTitle(Text("Hacker News"))
             .toolbar {
                 Button {
-                    networkManager.showInfoView.toggle()
+                    vm.showInfoView.toggle()
                 } label: {
                     Image(systemName: "info.circle")
                         .foregroundColor(.black)
                 }
             }
         }
-        .searchable(text: $networkManager.searchText)
+        .searchable(text: $vm.searchText)
         .task {
-            try? await networkManager.fetchData()
+            try? await vm.fetchData()
         }
         .refreshable {
-            try? await networkManager.fetchData()
+            try? await vm.fetchData()
         }
-        .alert(isPresented: $networkManager.showAlert) { () -> Alert in
+        .alert(isPresented: $vm.showAlert) { () -> Alert in
             Alert(title: Text("Error"),
                   message: Text("Sorry, there was a problem with your request."),
                   primaryButton: .default(Text("Try Again")) {
-                Task.init { try? await networkManager.fetchData() }
+                Task.init { try? await vm.fetchData() }
             },
                   secondaryButton: .cancel(Text("Cancel")))
         }
-        .sheet(isPresented: $networkManager.showInfoView) {
+        .sheet(isPresented: $vm.showInfoView) {
             InfoView()
         }
     }
